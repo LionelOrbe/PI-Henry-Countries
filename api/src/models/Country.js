@@ -12,7 +12,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING(3),
       primaryKey: true,
       unique: true,
-      allowNull: false
+      allowNull: false,
+      isAlpha: true
     },
     flag:{
       type: DataTypes.STRING,
