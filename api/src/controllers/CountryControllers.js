@@ -45,10 +45,10 @@ async function getCountryQ(req, res, next){
             where:{name:{[Op.iLike]: '%' + name + '%'}}})
         if (!countryQ.length) {
             return res.status(404).json('Country not found!')
-        }else{
+        } else {
             return res.json(countryQ)
         }
-        }catch(error){
+        } catch(error){
             next(error);
         }
     } else getAllCountriesDB(req, res, next);
