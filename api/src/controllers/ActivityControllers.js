@@ -1,32 +1,31 @@
-const {Activity, Country} = require('../db')
+const { Country, Activity } = require ('../db');
+const { Op } = require('sequelize')
 
-async function postActivityDB(req, res, next){
-
-    const { name,difficulty,duration,season,id } = req.body
-
+const postActivityDB = async (req, res, next) => {
     try {
-        if(name && difficulty && duration && season){
-            let actCreated = await Activity.create({
+        const {name, difficulty, duration, season, countries} = req.body
+        if(name && difficulty && duration && season && countries){
+            const activity = await Activity.create({
                     name,
                     difficulty,
                     duration,
-                    season,
-                })
+                    season         
+                });
 
-            try {
-                let country = await Country.findAll({where:{id : [id]}})
-                    await actCreated.addCountries(country)
-                    res.send(country)
-            } catch (error) {
-                next(error);
-                        }
-                    }
-        else {
-            res.status(404).send("Activity not created (missing data)")
+            countries.forEach(async (id) => {
+                const country = await Country.findOne({
+                    where: {id: {[Op.iLike]:`%${id}%`}}
+                        })
+                await country?.addActivity(activity);
+            })
+
+            return res.send(activity)
+        } else {
+            return res.status(404).json('Missing data')
         }
     } catch (error) {
         next(error)
-        }
+    }
 }
 
 async function getAllActivities(req, res, next){

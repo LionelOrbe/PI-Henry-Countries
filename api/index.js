@@ -23,10 +23,12 @@ const {getAllCountriesAPI}  = require ('./src/controllers/CountryControllers')
 
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: true })
+.then(getAllCountriesAPI)
+.then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console4
-    getAllCountriesAPI();  // precarga datos de la API
+      // precarga datos de la API
 
   });
 });

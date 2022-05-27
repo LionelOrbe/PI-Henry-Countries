@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const  Router  = require('express');
 const {postActivityDB, getAllActivities} = require('../controllers/ActivityControllers')
 
 const router = Router();

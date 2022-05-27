@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: aqua;
+    width: 20vw;
+    height: 45vh;
+    color: blue;
+    border-radius: 10px;
+}
+.name {
+    color: black;
+}

@@ -1,7 +1,16 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 export default function Landing() {
   return (
-    <div>Landing</div>
+    <div>
+      <h1>Landing Page</h1> 
+        <Link to = '/home'>
+      <button>Enter</button>
+
+        </Link>
+
+
+    </div>
   )
 }
