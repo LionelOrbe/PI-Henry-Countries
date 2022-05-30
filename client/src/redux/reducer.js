@@ -1,6 +1,6 @@
 const initialState = {
     allCountries: [],  // aca van todos los paises traidos de la DB
-    countries: [],  // paises seleccionados
+    countries: [],  // paises seleccionados 
     activities: [],
     detail: {}
 }
@@ -9,16 +9,17 @@ export default function Reducer (state = initialState, {type, payload}) {
     switch(type){
         case "GET_COUNTRIES": return {
             ...state,
+            countries: payload,
             allCountries: payload
         }
         case "GET_COUNTRY_DETAIL": return {
             ...state,
             detail: payload
         }
-        case "CLEAR_DETAIL": return {
-            ...state,
-            detail: {}
-        }
+        // case "CLEAR_FILTER": return {
+        //     ...state,
+        //     countries: allCountries
+        // }
         case "GET_SEARCH": return {
             ...state,
             countries: payload
@@ -42,7 +43,8 @@ export default function Reducer (state = initialState, {type, payload}) {
         case "FILTER_BY_ACTIVITY": 
 
         const filteredA = []
-        state.allCountries.map(coun => coun.Activity.forEach(act => {
+        if(payload === 'All') return state;
+        state.countries.map(coun => coun.activities.forEach(act => {
         if (act.name === payload) {
             filteredA.push(coun)
             }
@@ -50,7 +52,7 @@ export default function Reducer (state = initialState, {type, payload}) {
 
         return {
             ...state,
-            paises: filteredA
+            countries: filteredA
         }
         case "ORDER_ALFA":
         
@@ -85,7 +87,7 @@ export default function Reducer (state = initialState, {type, payload}) {
 
         return {
             ...state,
-            paises: orderPop
+            countries: orderPop
         }
     default: return state
     }

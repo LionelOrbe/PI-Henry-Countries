@@ -23,9 +23,9 @@ export function getCountryDetail(id){
     }
 }
 
-export function clearDetail(){
+export function clearFilter(){
     return {
-        type: "CLEAR_DETAIL"
+        type: "CLEAR_FILTER"
     }
 }
 
@@ -46,7 +46,7 @@ export function getSearch(name) {
 
 export function getActivities() {
     return async function (dispatch) {
-        var activities = await axios.get("http://localhost:3001/activities");
+        var activities = await axios.get("http://localhost:3001/activity");
         return dispatch({
             type:'GET_ACTIVITIES',
             payload: activities.data

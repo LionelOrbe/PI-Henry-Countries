@@ -3,11 +3,28 @@
     align-items: center;
     flex-direction: column;
     background-color: aqua;
-    width: 20vw;
-    height: 45vh;
+    width: 18vw;
+    height: 15vw;
     color: blue;
     border-radius: 10px;
+    box-shadow:
+  4.5px 4.5px 3.6px rgba(0, 0, 0, 0.044),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.056),
+  30.1px 30.1px 24.1px rgba(0, 0, 0, 0.063),
+  100px 100px 80px rgba(0, 0, 0, 0.07);
+    margin: 0.5vw;
 }
 .name {
     color: black;
+    margin-bottom: 1vw;
+}
+.flag{
+    width: 10vw;
+    height: 6vw;
+    box-shadow:
+  4.5px 4.5px 3.6px rgba(0, 0, 0, 0.044),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.056),
+  30.1px 30.1px 24.1px rgba(0, 0, 0, 0.063),
+  100px 100px 80px rgba(0, 0, 0, 0.07);
+    margin-bottom: 1vw;
 }
