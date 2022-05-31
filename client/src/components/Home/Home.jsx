@@ -13,10 +13,10 @@ export default function Home() {
 const dispatch = useDispatch();
 const {countries} = useSelector(state => state);
 const [currentPage, setcurrentPage] = useState(1); // se inicia en la primera pagina
-const [cpp] = useState(9); //cantidad de cards que se van a mostrar por pagina
+const [cpp] = useState(10); //cantidad de cards que se van a mostrar por pagina
 const lastCountry = currentPage * cpp;
 const firstCountry = lastCountry - cpp;
-const currentCountryPage = countries.slice(firstCountry, lastCountry);
+const currentCountriesPage = countries.slice(firstCountry, lastCountry);
 const pagination = (PageNumber)=>{setcurrentPage(PageNumber)}
 
 useEffect(()=>{
@@ -27,15 +27,16 @@ useEffect(()=>{
 
 
   return (
-    <div>
-    <Header/>
-    <Pagination
-        cpp = {cpp}
-        countries={countries.length}
-        pagination={pagination}>
-    </Pagination>
+    <div className={style.container}>
+
+      <Header/>
+      <Pagination
+          cpp = {cpp}
+          countries={countries.length}
+          pagination={pagination}>
+      </Pagination>
       <div className={style.cardscontainer}>
-        {currentCountryPage?.map(el => {
+        {currentCountriesPage?.map(el => {
         return(
         <div key={el.id}  >
         <Link to= {`/home/${el.id}`}>

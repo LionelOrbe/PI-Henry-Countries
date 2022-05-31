@@ -4,6 +4,7 @@ import {getCountryDetail} from '../../redux/actions'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import style from './Detail.module.css'
 
 
 export default function Detail(props) {
@@ -17,12 +18,11 @@ export default function Detail(props) {
   const country = useSelector((state)=> state.detail)
 
   return (
-    <div>
+    <div className={style.container}>
     <Header/>
-    <div>
-    {
-      country?
-          <div>
+    <div className={style.cardcontainer}>
+    {country?
+          <div className={style.card}>
               <h1>{country.name}</h1>
               <img src = {country.flag} alt={country.name} width='250px' height='175px' />
               <h2>Continent: {country.continent}</h2>
@@ -47,7 +47,7 @@ export default function Detail(props) {
                 }
               </div>
           </div> : <p>Country not Found</p>
-        }
+    }
     <Link to='/home'><button>Back</button></Link>
     </div>
     </div>

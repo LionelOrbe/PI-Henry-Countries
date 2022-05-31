@@ -1,0 +1,10 @@
+.button{
+    color: blue;
+    cursor: pointer;
+}
+
+.button:focus{
+    background-color: black;
+    border-radius: 5px;
+    width: 40px;
+}

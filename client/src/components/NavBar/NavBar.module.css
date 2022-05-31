@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #2C3333;
+    width: 15vw;
+    margin-top: 4vw;
+    border-right-style: solid;
+    border-color: #2666CF;
+    height: 90vh;
+    
+    
+}

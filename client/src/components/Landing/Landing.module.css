@@ -1,0 +1,41 @@
+.title{
+    color: #F5F2E7;
+    font-size: 100px;
+    text-shadow: 0px 3px 11px #2666CF;
+    margin-top: 1vh;
+    
+}
+.container{
+    background-image: url('../../img/globe.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-size: 100vw 110vh;
+}
+.enter {
+    margin-top: 65vh;
+    margin-left: 80vw;
+    padding-left: 33px;
+    padding-right: 33px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 9px;
+    background: #2666CF;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #F5F2E7;
+   }
+   
+  .enter:hover {
+    box-shadow: 7px 5px 56px -5px #F5F2E7;
+   }
+   
+   .enter:active {
+    transform: scale(0.97);
+    box-shadow: 7px 5px 56px -5px #F5F2E7;
+   }
+   .frase{
+       color: #F5F2E7;
+       font-size: 20px;
+   }

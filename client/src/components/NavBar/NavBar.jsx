@@ -1,11 +1,9 @@
 import React from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import { filterByContinent, filterByActivity, orderPopul, orderAlfa, getCountries,getActivities } from '../../redux/actions'
+import { filterByContinent, filterByActivity, orderPopul, orderAlfa, getCountries } from '../../redux/actions'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-//import { useEffect } from 'react';
-
-
+import style from '../NavBar/NavBar.module.css'
 
 export default function NavBar() {
   
@@ -32,43 +30,49 @@ export default function NavBar() {
     }
   
   return (
-    <div>
-      <div>NavBar</div>
-        
-
+    <div className={style.container}>
       <SearchBar/>
-      <select onChange = {e => handleFilterContinent(e)} >
-        <option value ='All' key='All'>Show all</option>
-        <option value='Americas' key='Am'>Americas</option>
-        <option value='Africa' key='Af'>Africa</option>
-        <option value ='Asia' key='As'>Asia</option>
-        <option value='Europe' key='Eu'>Europa</option>
-        <option value='Oceania' key='Oc'>Oceania</option>
-      </select>
-        {(activities.length === 0)? <p>Create activities to use activity filter</p>
-      : <select onChange = {e => handleFilterActivity(e)}>
-      <option value = 'All'>Select activity</option>  
-      {activities.map((e)=>(
-      <option value = {e.name} key={e.id}> {e.name} </option>
-        ))
-      
-    }
-    </select>
-    }
-    <Link to = '/activity'><button>Create Activity</button></Link>
-
-    <select onChange ={e => handleOrderPop(e)}>
-      <option value="" >Choose population order</option>
-        <option value ='asc' key='asc'>Lowest poppulation first</option>
-        <option value ='des' key='des'>Largest population first</option>
-    </select>
-    <button onClick={e=> handleResetClick(e)}>Reset filters</button>
-
-    <select onChange ={e => handleOrderAlfa(e)}>
-    <option value ='asc' key='asc'>A-Z</option>
-    <option value ='des' key='des'>Z-A</option>
-    </select>
+      <div>
+        <select onChange = {e => handleFilterContinent(e)} >
+          <option value ='All' key='All'>Show all</option>
+          <option value='Americas' key='Am'>Americas</option>
+          <option value='Africa' key='Af'>Africa</option>
+          <option value ='Asia' key='As'>Asia</option>
+          <option value='Europe' key='Eu'>Europa</option>
+          <option value='Oceania' key='Oc'>Oceania</option>
+        </select>
+      </div>
+      <div>
+        <select onChange ={e => handleOrderPop(e)}>
+          <option value="" >Choose population order</option>
+            <option value ='asc' key='asc'>Lowest poppulation first</option>
+            <option value ='des' key='des'>Largest population first</option>
+        </select>
+      </div>
+      <div>
+        <select onChange ={e => handleOrderAlfa(e)}>
+        <option value ='asc' key='asc'>A-Z</option>
+        <option value ='des' key='des'>Z-A</option>
+        </select>
+      </div>
+      <div>
+        <button onClick={e=> handleResetClick(e)}>Reset filters</button>
+      </div>
+    <div>
+      {(activities.length === 0)? <p>Create activities to filter</p>
+        : <select onChange = {e => handleFilterActivity(e)}>
+        <option value = 'All'>Select activity</option>  
+        {activities.map((e)=>(
+          <option value = {e.name} key={e.id}> {e.name} </option>
+          ))
+        }
+        </select>
+      }
     </div>
+      <Link to = '/activity'><button>Create Activity</button></Link>
+
+
+      </div>
 
 
 

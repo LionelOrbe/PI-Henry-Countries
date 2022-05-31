@@ -1,7 +1,8 @@
 import React from 'react'
+import style from './Header.module.css'
 
 export default function Header() {
   return (
-    <div>Header</div>
+    <div className={style.header}>Henry - Countries App</div>
   )
 }

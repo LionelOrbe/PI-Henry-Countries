@@ -1,7 +1,16 @@
 .cardscontainer{
  display: flex;
- justify-content: space-around;
+ justify-content: space-evenly;
  flex-wrap: wrap;
- background-color: rgb(87, 87, 87);
+ background-color: #2C3333;
+ height: 85vh;
+    width: 80vw;
+    margin-right: 2vw;
  
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    
+    
 }

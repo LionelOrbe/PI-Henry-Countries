@@ -17,7 +17,7 @@ function App() {
           <Route exact path ='/home' component={NavBar} />
           <Route exact path = '/home' component={Home} />
           <Route exact path='/home/:id' component={Detail}/>
-          <Route exact path='/activities' component={CreateActivity}/>
+          <Route exact path='/activity' component={CreateActivity}/>
         </Route>
         <Route path='*' component={NotFound} />
      
