@@ -19,37 +19,36 @@ export default function Detail(props) {
 
   return (
     <div className={style.container}>
-    <Header/>
-    <div className={style.cardcontainer}>
-    {country?
+      <Header/>
+      <div className={style.cardcontainer}>
+        <div className={style.countrycontainer}>
           <div className={style.card}>
-              <h1>{country.name}</h1>
-              <img src = {country.flag} alt={country.name} width='250px' height='175px' />
-              <h2>Continent: {country.continent}</h2>
-              <h3>Capital: {country.capital}</h3>
-              <h4>Subregion: {country.subregion}</h4>
-              <h5>Area: {country.area} km2</h5>
-              <h5>Population: {country.population}</h5>
-              <div>{country.activities?.map(e => {
-                return(
-                <div>
-                <h6>Activity: {e.name} </h6>
-                
-                <h6>Dificulty: {e.dificulty} </h6>
-                
-                <h6>Season: {e.season} </h6>
-               
-                <h6>Duration: {e.duration}</h6>
-                </div>
+            <img className={style.flag} src = {country.flag} alt={country.name}/>
+            <div className={style.name}>{country.name}</div>
+            <div className={style.info}>Continent: {country.continent}</div>
+            <div className={style.info}>Capital: {country.capital}</div>
+            <div className={style.info}>Subregion: {country.subregion}</div>
+            <div className={style.info}>Area: {country.area} km2</div>
+            <div className={style.info}>Population: {country.population}</div>
+          </div> 
+          <div>
+            <div className={style.name}>Country Activities: </div>
+            {country.activities?.map(e => {
+            return(
+            <div className={style.actcard}>
+              <div className={style.name}>Activity: {e.name} </div>
+              <div className={style.info}>Difficulty: {e.difficulty} </div>
+              <div className={style.info}>Season: {e.season} </div>
+              <div className={style.info}>Duration: {e.duration}</div>
+            </div>
                       )
                     }
                   )
                 }
-              </div>
-          </div> : <p>Country not Found</p>
-    }
-    <Link to='/home'><button>Back</button></Link>
-    </div>
+          </div>
+        </div>
+          <Link to='/home'><button>Back</button></Link>
+      </div>
     </div>
   )
 }

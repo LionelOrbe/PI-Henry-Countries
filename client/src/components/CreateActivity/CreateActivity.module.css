@@ -1,0 +1,55 @@
+.container{
+    display: flex; 
+    flex-direction: column;   
+    background-image: url('../../img/black\ background.jpg');
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    
+    }
+    .cardcontainer{
+        width: 60vw;
+        background-color: blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 70vh;
+
+    }
+
+.title{
+    background-color: blueviolet;
+    color: #F5F2E7;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.pdanger {
+    color: red;
+    font-size: 10px;
+  }
+  
+  .atribute{
+    color: #F5F2E7;
+    
+  }
+  .input {
+    margin-top: 10px;
+    border: 2px solid #2666CF;
+    border-radius: 10px;
+    padding: 5px 20px;
+    background: transparent;
+    max-width: 190px;
+   }
+   .input:active {
+    box-shadow: 2px 2px 15px #2666CF inset;
+   }
+   .countrycontainer{
+       display: flex;
+       flex-wrap: wrap;
+       background-color: aqua;
+       justify-content: space-around;
+       width: 30vw;
+   }
+   
+   

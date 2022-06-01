@@ -1,12 +1,14 @@
 .header{
-    background-color: #2C3333;
+    background-image: url('../../img/black\ background.jpg');
     height: 8vh;
     border-bottom-style: solid;
+    border-width: 1px;
     border-color: #2666CF;
-    margin-right: 2vw;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     color: #F5F2E7;
+    
 }

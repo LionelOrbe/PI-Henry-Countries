@@ -2,15 +2,15 @@
  display: flex;
  justify-content: space-evenly;
  flex-wrap: wrap;
- background-color: #2C3333;
- height: 85vh;
-    width: 80vw;
-    margin-right: 2vw;
  
+ height: 83vh;
+    width: 82vw;
+    margin-right: 0vw;
+    background-image: url('../../img/black\ background.jpg');
 }
 .container{
     display: flex;
     flex-direction: column;
-    
+    background-image: url('../../img/black\ background.jpg');
     
 }

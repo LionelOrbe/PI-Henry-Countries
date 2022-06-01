@@ -33,7 +33,8 @@ export default function NavBar() {
     <div className={style.container}>
       <SearchBar/>
       <div>
-        <select onChange = {e => handleFilterContinent(e)} >
+        <div className={style.title} >Order by Continent</div>
+        <select className={style.input} onChange = {e => handleFilterContinent(e)} >
           <option value ='All' key='All'>Show all</option>
           <option value='Americas' key='Am'>Americas</option>
           <option value='Africa' key='Af'>Africa</option>
@@ -43,33 +44,39 @@ export default function NavBar() {
         </select>
       </div>
       <div>
-        <select onChange ={e => handleOrderPop(e)}>
-          <option value="" >Choose population order</option>
+        <div className={style.title} >Order by population</div>
+        <select className={style.input} onChange ={e => handleOrderPop(e)}>
+          <option value="" >Choose order</option>
             <option value ='asc' key='asc'>Lowest poppulation first</option>
             <option value ='des' key='des'>Largest population first</option>
         </select>
       </div>
       <div>
-        <select onChange ={e => handleOrderAlfa(e)}>
+        <div className={style.title} >Alphabetical order</div>
+        <select  className={style.input} onChange ={e => handleOrderAlfa(e)}>
+        <option value="" >Choose order</option>
         <option value ='asc' key='asc'>A-Z</option>
         <option value ='des' key='des'>Z-A</option>
         </select>
       </div>
       <div>
-        <button onClick={e=> handleResetClick(e)}>Reset filters</button>
+        <button onClick={e=> handleResetClick(e)} className={style.button}>Reset filters</button>
       </div>
-    <div>
-      {(activities.length === 0)? <p>Create activities to filter</p>
-        : <select onChange = {e => handleFilterActivity(e)}>
-        <option value = 'All'>Select activity</option>  
-        {activities.map((e)=>(
-          <option value = {e.name} key={e.id}> {e.name} </option>
-          ))
+    <div className={style.actcontainer}>
+      <div className={style.title}>Activities</div>
+      <div >
+        {(activities.length === 0)? <p>Create activities to filter</p>
+          : <select className={style.input} onChange = {e => handleFilterActivity(e)}>
+          <option value = 'All'>Select activity</option>  
+          {activities.map((e)=>(
+            <option value = {e.name} key={e.id}> {e.name} </option>
+            ))
+          }
+          </select>
         }
-        </select>
-      }
+      </div>
+      <Link to = '/activity'><button className={style.button}>Create Activity</button></Link>
     </div>
-      <Link to = '/activity'><button>Create Activity</button></Link>
 
 
       </div>

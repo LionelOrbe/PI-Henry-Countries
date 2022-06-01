@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import Header from '../Header/Header';
-import { getActivities, postActivity } from '../../redux/actions';
+import { getActivities, getCountries, postActivity } from '../../redux/actions';
+import style from '../CreateActivity/CreateActivity.module.css'
+import { Link } from 'react-router-dom';
 
 
 
 export default function CreateActivity() {
   const dispatch = useDispatch()
-  const {countries} = useSelector((state) => state)
+  const {allCountries} = useSelector((state) => state)
   
   const [input, setInput] = useState({
     name:"",
@@ -17,9 +19,10 @@ export default function CreateActivity() {
     countries:[]
     })
 
-  const [, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
   useEffect(()=>{
+    dispatch(getCountries())
     dispatch(getActivities())
   },[dispatch])
 
@@ -29,7 +32,10 @@ export default function CreateActivity() {
       ...input,
       [e.target.name]: e.target.value
     });
-
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
   }
   
   function handleCountry(e) {
@@ -37,6 +43,10 @@ export default function CreateActivity() {
       ...input,
       countries: [...input.countries, e.target.value]
     })
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
   }
   
   function handleSeason(e) {
@@ -44,25 +54,41 @@ export default function CreateActivity() {
       ...input,
       season: e.target.value
     })
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
   }
   
   function handleDelete(e) {
     setInput({
       ...input,
-      countries: input.countries.filter(el => el !== e)
+      countries: input.countries.filter((el) => el !== e)
     })
   }
 
-  function handleDifficulty(ev) {                               
+  function handleDifficulty(e) {                               
     setInput({
         ...input,
-        difficulty: ev.target.value
+        difficulty: e.target.value
+    })
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }));
+  }
+  
+  function handleDuration(ev) {                               
+    setInput({
+        ...input,
+        duration: ev.target.value
     })
   }
   
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit() {
+    
     dispatch(postActivity(input))
+
     setInput({
       name:"",
       difficulty:"",
@@ -70,42 +96,36 @@ export default function CreateActivity() {
       season:"",
       countries:[]
     })
-
-    setErrors (validate({
-      ...input,
-      [e.target.value]: e.target.value
-      }))
   }
 
-  function handleDuration(ev) {                               
-    setInput({
-        ...input,
-        duration: ev.target.value
-    })
-  }
 
 
   return (
-    <div>
+    <div className={style.container}>
       <Header/>
-      <div>Create Activity</div>
+      <div className={style.cardcontainer}>
+
+      <div className={style.title}>Create Activity</div>
       <div>
         <form>
             <div>
-                <label>Activity Name: </label>
-                <input type = 'text' value = {input.name} name ='name'
+                <label className={style.atribute}>Activity Name: </label>
+                <input className={style.input} type = 'text' value = {input.name} name ='name'
                 onChange={(e) => handleName(e)}></input>
+                {errors.name && (<p className={style.pdanger}>{errors.name}</p>)}
             </div>
             <div>
-                <label>Difficulty(1 to 5): </label>
-                <input type="range" list="difficulty" min='1' max='5' step='1' name ='difficulty'
+                <label className={style.atribute}>Difficulty(1 to 5): </label>
+                <input className={style.input} type="range" list="difficulty" min='1'max='5' step='1' name ='difficulty'
                   onChange = {(ev) => handleDifficulty(ev)}></input>
+                  {errors.difficulty && (<p className={style.pdanger}>{errors.difficulty}</p>)}
+                  <label className={style.atribute}>  {input.difficulty}</label>
                 <datalist id="difficulty">
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                  <option value="4"></option>
-                  <option value="5"></option>
+                  <option value='1' key={1}></option>
+                  <option value='2' key={2}></option>
+                  <option value='3'key={3}></option>
+                  <option value='4'key={4}></option>
+                  <option value='5'key={5}></option>
                  
                                   
                 </datalist>
@@ -113,56 +133,71 @@ export default function CreateActivity() {
             </div>
 
             <div>
-                <label>Duration(0.5 to 8h.): </label>
-                <input type="range" list="tickmarks2" min='0.5' max='8' step='0.5' name ='duration'
-                  onChange={(e) => handleDuration(e)}></input>
+                <label className={style.atribute}>Duration(0.5 to 8h.): </label>
+                <input className={style.input} type="range" list="tickmarks2" min={0.5} max={8} step={0.5} name ='duration'
+                  onChange={(e) => handleDuration(e)}  ></input>
+                <label className={style.atribute}>  {input.duration} h.</label>
                 <datalist id="tickmarks2">
-                  <option value="0"></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-                  <option value="4"></option>
-                  <option value="5"></option>
-                  <option value="6"></option>
-                  <option value="7"></option>
-                  <option value="8"></option>
+                  <option value="0" key='0'></option>
+                  <option value="1" key='1'></option>
+                  <option value="2" key='2'></option>
+                  <option value="3" key='3'></option>
+                  <option value="4" key='4'></option>
+                  <option value="5" key='5'></option>
+                  <option value="6" key='6'></option>
+                  <option value="7" key='7'></option>
+                  <option value="8" key='8'></option>
                 </datalist>
             </div>
                 <div>
-                    <label>Season: </label>
-                    <select onChange={(ev) => handleSeason(ev)}>
-                    <option value ='spring'>Spring</option>
-                    <option value ='summer'>Summer</option>
-                    <option value='fall'>Fall</option>
-                    <option value='winter'>Winter</option>
-                    <option value='any'>All year</option>
+                  {errors.duration && (<p className={style.pdanger}>{errors.duration}</p>)}
+                    <label className={style.atribute}>Season: </label>
+                    <select className={style.input} onChange={(ev) => handleSeason(ev)}>
+                    <option value ='spring' key='spring'>Spring</option>
+                    <option value ='summer' key='summer'>Summer</option>
+                    <option value='fall' key='fall'>Fall</option>
+                    <option value='winter' key='winter'>Winter</option>
+                    <option value='any' key='any'>All year</option>
                     </select>
+                    {errors.season && (<p className={style.pdanger}>{errors.season}</p>)}
                 </div>
-            <label>Paises: <select onChange = {(ev) => handleCountry(ev)}>
-                    {countries.map((ev)=>(
-                        <option value ={ev.id} >{ev.name} </option>
+            <label className={style.atribute}>Countries: <select className={style.input} onChange = {(ev) => handleCountry(ev)}>
+                    {allCountries.map((c)=>(
+                        <option value ={c.id} key={c.name}>{c.name} </option>
                     ))}
             </select></label>
-            <button type='submit' onClick={(ev) => handleSubmit(ev)}>Add Activity</button>
+            <p className={style.pdanger}>{errors.name} {errors.difficulty} {errors.duration } {errors.season} {errors.countries}</p>
+            <Link to = '/home'><button>Back</button></Link>
+            <button type='submit' onClick={(ev) => handleSubmit(ev)} disabled={!(Object.keys(errors).length===0)}>Add Activity</button>
         </form>
-        {input.countries.map(el=>
+        <div className={style.countrycontainer}>
+          {input.countries.map(c=>
             <div>
-            <h6>{el}</h6>
-            <button onClick={(el)=> handleDelete(el)}>x</button>
+            <div key={c}>{c}</div>
+            <button onClick={() => handleDelete(c)}>x</button>
             </div>)}
+        </div>             
+      </div>
       </div>
     </div>
   )
 }
 
 function validate(input) {
+  let errors = {};
   if(!input.name){
-      alert("Name is required") 
-  }else if(!input.dificulty){
-      alert ("Dificulty is required")
-  }else if(!input.season){
-     alert ("Please select season")
-  }else if(input.countries.length < 1){
-     alert ("Please select the countries where this activity is practiced")
+    errors.name ="Name is required"
+  } else if (!/^[A-Za-z]+$/.test(input.name)) {
+    errors.name = 'Activity name is invalid';
+  } 
+  if(!input.difficulty){
+    errors.difficulty ="Dificulty is required"
   }
+  if(!input.season){
+    errors.season ="Please select season"
+  }
+  if(input.countries.length < 1){
+    errors.countries ="Please select the countries where this activity is practiced"
+  }
+  return errors;
 }

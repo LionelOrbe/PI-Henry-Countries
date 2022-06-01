@@ -9,8 +9,8 @@ export default function Card({name, flag, continent, population}) {
           <div className = {style.container2}>
             <div className={style.name}>{name}</div>
             <img className={style.flag} src={flag} alt='country flag'/>
-            <div>{continent}</div>
-            <div>{population}</div>
+            <div className={style.details}>Cont.: {continent}</div>
+            <div className={style.details}>Pop.: {population}</div>
           </div>
         </div>
     </div>

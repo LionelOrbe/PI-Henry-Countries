@@ -28,14 +28,15 @@
    }
    
   .enter:hover {
-    box-shadow: 7px 5px 56px -5px #F5F2E7;
+    box-shadow: 0px 0px 15px #F5F2E7;
    }
    
    .enter:active {
     transform: scale(0.97);
-    box-shadow: 7px 5px 56px -5px #F5F2E7;
+    box-shadow: 0px 0px 20px #F5F2E7;
    }
    .frase{
        color: #F5F2E7;
        font-size: 20px;
+       text-shadow: 0px 3px 11px #2666CF;
    }
