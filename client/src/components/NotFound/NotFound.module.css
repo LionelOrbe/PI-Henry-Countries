@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('../../img/404.jpg');
+    width: 60vw;
+    height: 100vh;
+    align-items: flex-start;
+    border-radius: 20px;
+    
+}
+.title{
+    margin-top: 35vh;
+    margin-left: 5vw;
+    font-size: 50px;
+    color: #1a1a1a
+}
+.frase{
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 3vw;
+    color: #1a1a1a
+}

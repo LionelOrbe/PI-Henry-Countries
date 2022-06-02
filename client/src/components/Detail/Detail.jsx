@@ -39,15 +39,13 @@ export default function Detail(props) {
               <div className={style.name}>Activity: {e.name} </div>
               <div className={style.info}>Difficulty: {e.difficulty} </div>
               <div className={style.info}>Season: {e.season} </div>
-              <div className={style.info}>Duration: {e.duration}</div>
+              <div className={style.info}>Duration: {e.duration} h</div>
             </div>
-                      )
-                    }
-                  )
-                }
+                      )}) 
+             }
           </div>
         </div>
-          <Link to='/home'><button>Back</button></Link>
+          <Link to='/home'><button  className={style.button}>Back</button></Link>
       </div>
     </div>
   )

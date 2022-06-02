@@ -13,11 +13,14 @@ export default function Home() {
 const dispatch = useDispatch();
 const {countries} = useSelector(state => state);
 const [currentPage, setcurrentPage] = useState(1); // se inicia en la primera pagina
-const [cpp] = useState(10); //cantidad de cards que se van a mostrar por pagina
+let cpp = 10;   //cantidad de cards que se van a mostrar por pagina
+// if (currentPage === 1) {cpp= 9 }
+// if (currentPage >= 2) {cpp =10 }
 const lastCountry = currentPage * cpp;
 const firstCountry = lastCountry - cpp;
 const currentCountriesPage = countries.slice(firstCountry, lastCountry);
 const pagination = (PageNumber)=>{setcurrentPage(PageNumber)}
+
 
 useEffect(()=>{
   dispatch(getCountries())

@@ -18,8 +18,8 @@ function App() {
           <Route exact path = '/home' component={Home} />
           <Route exact path='/home/:id' component={Detail}/>
           <Route exact path='/activity' component={CreateActivity}/>
+         <Route path='*' component={NotFound} />
         </Route>
-        <Route path='*' component={NotFound} />
      
         
       </Switch>

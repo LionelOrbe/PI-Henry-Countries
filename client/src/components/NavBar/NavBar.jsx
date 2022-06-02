@@ -36,8 +36,9 @@ export default function NavBar() {
         <div className={style.title} >Order by Continent</div>
         <select className={style.input} onChange = {e => handleFilterContinent(e)} >
           <option value ='All' key='All'>Show all</option>
-          <option value='Americas' key='Am'>Americas</option>
           <option value='Africa' key='Af'>Africa</option>
+          <option value='Americas' key='Am'>Americas</option>
+          <option value='Antarctic' key='An'>Antarctic</option>
           <option value ='Asia' key='As'>Asia</option>
           <option value='Europe' key='Eu'>Europa</option>
           <option value='Oceania' key='Oc'>Oceania</option>
@@ -65,7 +66,7 @@ export default function NavBar() {
     <div className={style.actcontainer}>
       <div className={style.title}>Activities</div>
       <div >
-        {(activities.length === 0)? <p>Create activities to filter</p>
+        {(activities.length === 0)? <p className={style.title}>Create activities to filter</p>
           : <select className={style.input} onChange = {e => handleFilterActivity(e)}>
           <option value = 'All'>Select activity</option>  
           {activities.map((e)=>(
