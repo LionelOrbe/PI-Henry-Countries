@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail';
 import CreateActivity from './components/CreateActivity/CreateActivity';
-import NotFound from './components/NotFound/NotFound';
+
 
 
 function App() {
@@ -18,10 +18,8 @@ function App() {
           <Route exact path = '/home' component={Home} />
           <Route exact path='/home/:id' component={Detail}/>
           <Route exact path='/activity' component={CreateActivity}/>
-         <Route path='*' component={NotFound} />
         </Route>
-     
-        
+                  
       </Switch>
      
     </div>
