@@ -44,7 +44,7 @@ export default function Reducer (state = initialState, {type, payload}) {
 
         const filteredA = []
         if(payload === 'All') return state;
-        state.countries.map(coun => coun.activities.forEach(act => {
+        state.allCountries.map(coun => coun.activities.forEach(act => {
         if (act.name === payload) {
             filteredA.push(coun)
             }

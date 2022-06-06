@@ -35,11 +35,11 @@ export default function Detail(props) {
             <div className={style.name}>Country Activities: </div>
             {country.activities?.map(e => {
             return(
-            <div className={style.actcard}>
-              <div className={style.name}>Activity: {e.name} </div>
-              <div className={style.info}>Difficulty: {e.difficulty} </div>
-              <div className={style.info}>Season: {e.season} </div>
-              <div className={style.info}>Duration: {e.duration} h</div>
+            <div key= {e.id+1000}className={style.actcard}>
+              <div key= {e.name} className={style.name}>Activity: {e.name} </div>
+              <div key= {e.difficulty+2000} className={style.info}>Difficulty: {e.difficulty} </div>
+              <div key= {e.season} className={style.info}>Season: {e.season} </div>
+              <div key= {e.duration} className={style.info}>Duration: {e.duration} h</div>
             </div>
                       )}) 
              }
