@@ -2,7 +2,7 @@ export function validate(input) {
     let errors = {};
     if(!input.name){
       errors.name ="Name is required"
-    } else if (!/^[A-Za-z]+$/.test(input.name)) {
+    } else if (!/^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/.test(input.name)) {
       errors.name = 'Activity name is invalid';
     } else if(!input.difficulty){
       errors.difficulty ="Dificulty is required"
