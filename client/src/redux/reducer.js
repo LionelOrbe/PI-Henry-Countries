@@ -16,10 +16,6 @@ export default function Reducer (state = initialState, {type, payload}) {
             ...state,
             detail: payload
         }
-        // case "CLEAR_FILTER": return {
-        //     ...state,
-        //     countries: allCountries
-        // }
         case "GET_SEARCH": return {
             ...state,
             countries: payload
